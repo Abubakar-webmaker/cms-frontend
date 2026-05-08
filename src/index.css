@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --bg: 238 242 247;
+    --bg-2: 230 236 245;
+    --surface: 255 255 255;
+    --surface-2: 246 248 252;
+    --surface-3: 235 241 249;
+    --border: 216 225 236;
+    --text: 20 28 42;
+    --muted: 85 99 118;
+    --soft: 126 140 158;
+    --accent: 0 122 204;
+    --accent-2: 36 159 232;
+    --accent-contrast: 255 255 255;
+    --shadow: 21 32 50;
+    --ring: 0 122 204;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --bg: 13 18 27;
+    --bg-2: 17 24 36;
+    --surface: 24 32 45;
+    --surface-2: 30 40 56;
+    --surface-3: 41 54 73;
+    --border: 57 72 94;
+    --text: 235 241 248;
+    --muted: 166 178 194;
+    --soft: 126 140 158;
+    --accent: 46 154 230;
+    --accent-2: 77 184 245;
+    --accent-contrast: 255 255 255;
+    --shadow: 0 0 0;
+    --ring: 77 184 245;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen antialiased;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: rgb(var(--text));
+    background: linear-gradient(180deg, rgb(var(--bg)) 0%, rgb(var(--bg-2)) 100%);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: inherit;
+    letter-spacing: 0;
+    color: rgb(var(--text));
+  }
+
+  ::selection {
+    background: rgb(var(--accent));
+    color: rgb(var(--accent-contrast));
+  }
+
+  a {
+    @apply transition-colors;
+    color: inherit;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    @apply outline-none;
+    color: inherit;
+  }
+
+  * {
+    border-color: rgb(var(--border));
+  }
+}
+
+@layer components {
+  .glass-panel,
+  .surface,
+  .app-card {
+    background: rgb(var(--surface));
+    border: 1px solid rgb(var(--border));
+    border-radius: 8px;
+    box-shadow: 0 10px 28px color-mix(in srgb, rgb(var(--shadow)) 7%, transparent);
+  }
+
+  .app-card-soft {
+    background: rgb(var(--surface-2));
+    border: 1px solid rgb(var(--border));
+    border-radius: 8px;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-md px-2.5 py-1 text-[11px] uppercase;
+    background: rgb(var(--surface-2));
+    border: 1px solid rgb(var(--border));
+    color: rgb(var(--muted));
+    font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  .section-shell {
+    @apply mx-auto w-full max-w-7xl px-3 sm:px-5 lg:px-6;
+  }
+
+  .app-page {
+    @apply min-h-screen;
+  }
+
+  .app-title {
+    @apply text-3xl tracking-normal sm:text-4xl lg:text-5xl;
+    color: rgb(var(--text));
+    font-weight: 800;
+  }
+
+  .app-subtitle,
+  .app-muted {
+    color: rgb(var(--muted));
+  }
+
+  .app-field {
+    @apply w-full rounded-md px-3.5 py-3 text-sm transition-colors;
+    background: rgb(var(--surface));
+    border: 1px solid rgb(var(--border));
+    color: rgb(var(--text));
+  }
+
+  .app-field::placeholder {
+    color: rgb(var(--soft));
+  }
+
+  .app-field:focus {
+    border-color: rgb(var(--accent));
+    box-shadow: 0 0 0 3px color-mix(in srgb, rgb(var(--ring)) 16%, transparent);
+  }
+
+  .app-btn-primary {
+    @apply rounded-md px-4 py-2.5 text-sm transition-colors;
+    background: rgb(var(--accent));
+    color: rgb(var(--accent-contrast));
+    font-weight: 700;
+  }
+
+  .app-btn-primary:hover {
+    background: color-mix(in srgb, rgb(var(--accent)) 84%, rgb(var(--accent-2)));
+  }
+
+  .app-btn-secondary {
+    @apply rounded-md px-4 py-2.5 text-sm transition-colors;
+    background: rgb(var(--surface));
+    border: 1px solid rgb(var(--border));
+    color: rgb(var(--text));
+    font-weight: 700;
+  }
+
+  .app-btn-secondary:hover {
+    background: rgb(var(--surface-2));
+  }
+
+  .app-chip {
+    @apply inline-flex items-center rounded-md px-2.5 py-1 text-xs;
+    background: rgb(var(--surface-2));
+    border: 1px solid rgb(var(--border));
+    color: rgb(var(--muted));
+    font-weight: 700;
+  }
+
+  .social-icon-btn {
+    @apply inline-flex h-10 w-10 items-center justify-center rounded-md text-sm transition-colors;
+    background: rgb(var(--surface-2));
+    border: 1px solid rgb(var(--border));
+    color: rgb(var(--muted));
+    font-weight: 800;
+  }
+
+  .social-icon-btn:hover {
+    background: color-mix(in srgb, rgb(var(--accent)) 10%, rgb(var(--surface)));
+    color: rgb(var(--accent));
+  }
+}
+
+/* Keep older Tailwind-heavy screens aligned with the MeWe-style system. */
+.rounded-2xl,
+.rounded-3xl,
+.rounded-\[1\.5rem\],
+.rounded-\[2rem\] {
+  border-radius: 8px !important;
+}
+
+.bg-slate-950 {
+  background-color: rgb(var(--accent)) !important;
+}
+
+.hover\:bg-slate-800:hover {
+  background-color: color-mix(in srgb, rgb(var(--accent)) 84%, rgb(var(--accent-2))) !important;
+}
+
+.text-slate-950,
+.text-slate-900 {
+  color: rgb(var(--text)) !important;
+}
+
+.text-slate-700,
+.text-slate-600,
+.text-slate-500,
+.text-slate-400 {
+  color: rgb(var(--muted)) !important;
+}
+
+.bg-slate-50,
+.bg-slate-100 {
+  background-color: rgb(var(--surface-2)) !important;
+}
+
+.border-slate-200,
+.border-slate-100,
+.border-slate-50 {
+  border-color: rgb(var(--border)) !important;
+}
